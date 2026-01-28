@@ -3,7 +3,7 @@
 export const siteTexts = {
   // 导航相关
   nav: {
-    logo: 'GameDev',
+    logo: 'Portfolio',
     items: [
       { name: '首页', href: '#home' },
       { name: '项目', href: '#projects' },
@@ -16,6 +16,11 @@ export const siteTexts = {
   hero: {
     title: '游戏开发者',
     subtitle: '专注于 Unity 与 Unreal 引擎，创造沉浸式游戏体验',
+    avatar: {
+      src: '/src/assets/images/img_head.png', // 默认头像路径
+      alt: '游戏开发者头像',
+      description: '专业游戏开发者，热爱创造沉浸式游戏体验'
+    },
     cta: {
       primary: '查看项目',
       secondary: '联系我'

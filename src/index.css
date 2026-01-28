@@ -19,3 +19,26 @@
     min-height: 100vh;
   }
 }
+
+/* 修复黑点问题 */
+p::before,
+p::after {
+  display: none !important;
+}
+
+/* 隐藏任何可能的伪元素 */
+*::before,
+*::after {
+  content: none !important;
+}
+
+/* 强制移除按钮边框 */
+a {
+  border: none !important;
+  outline: none !important;
+}
+
+button {
+  border: none !important;
+  outline: none !important;
+}
