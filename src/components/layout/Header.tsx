@@ -1,8 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 import { siteTexts } from '../../data/texts';
 
 const Header: React.FC = () => {
+  const location = useLocation();
+
+  // 检查当前路径是否活跃
+  const isActive = (path: string) => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname === path;
+  };
+
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -35,19 +46,22 @@ const Header: React.FC = () => {
         }}
       >
         {/* Logo */}
-        <motion.a
-          href="#home"
-          style={{
-            fontSize: '1.5rem',
-            fontWeight: 'bold',
-            color: 'white',
-            textDecoration: 'none'
-          }}
-          whileHover={{ scale: 1.05, color: '#3b82f6' }}
+        <motion.div
+          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          {siteTexts.nav.logo}
-        </motion.a>
+          <Link
+            to="/"
+            style={{
+              fontSize: '1.5rem',
+              fontWeight: 'bold',
+              color: 'white',
+              textDecoration: 'none'
+            }}
+          >
+            {siteTexts.nav.logo}
+          </Link>
+        </motion.div>
 
         {/* Navigation */}
         <div
@@ -57,22 +71,26 @@ const Header: React.FC = () => {
           }}
         >
           {siteTexts.nav.items.map((item) => (
-            <motion.a
+            <motion.div
               key={item.name}
-              href={item.href}
-              style={{
-                color: 'white',
-                textDecoration: 'none',
-                fontWeight: '500',
-                padding: '8px 12px',
-                borderRadius: '4px',
-                whiteSpace: 'nowrap'
-              }}
-              whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 0.1)', color: '#3b82f6' }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              {item.name}
-            </motion.a>
+              <Link
+                to={item.href}
+                style={{
+                  color: isActive(item.href) ? '#3b82f6' : 'white',
+                  textDecoration: 'none',
+                  fontWeight: '500',
+                  padding: '8px 12px',
+                  borderRadius: '4px',
+                  whiteSpace: 'nowrap',
+                  backgroundColor: isActive(item.href) ? 'rgba(59, 130, 246, 0.1)' : 'transparent'
+                }}
+              >
+                {item.name}
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>

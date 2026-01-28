@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { siteTexts } from '../../data/texts';
 import AnimatedBackground from '../common/AnimatedBackground';
 
@@ -96,35 +97,43 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <motion.a
-              href="#projects"
-              className="px-8 py-3 bg-white rounded-lg font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl backdrop-blur-sm border-0"
-              style={{ 
-                color: '#ffffff',
-                border: 'none',
-                outline: 'none',
-                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-              }}
+            <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
-              {siteTexts.hero.cta.primary}
-            </motion.a>
+              <Link
+                to="/projects"
+                className="inline-block px-8 py-3 bg-white rounded-lg font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl backdrop-blur-sm border-0"
+                style={{ 
+                  color: '#ffffff',
+                  border: 'none',
+                  outline: 'none',
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                  textDecoration: 'none'
+                }}
+              >
+                {siteTexts.hero.cta.primary}
+              </Link>
+            </motion.div>
             
-            <motion.a
-              href="#contact"
-              className="px-8 py-3 bg-white rounded-lg font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl backdrop-blur-sm border-0"
-              style={{ 
-                color: '#ffffff',
-                border: 'none',
-                outline: 'none',
-                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-              }}
+            <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
-              {siteTexts.hero.cta.secondary}
-            </motion.a>
+              <Link
+                to="/contact"
+                className="inline-block px-8 py-3 bg-white rounded-lg font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl backdrop-blur-sm border-0"
+                style={{ 
+                  color: '#ffffff',
+                  border: 'none',
+                  outline: 'none',
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                  textDecoration: 'none'
+                }}
+              >
+                {siteTexts.hero.cta.secondary}
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </div>
