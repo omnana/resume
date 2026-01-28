@@ -59,7 +59,7 @@ const About: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-dark/50 via-transparent to-dark-secondary/50 opacity-70" />
       
       {/* 内容区域 */}
-      <div className="relative z-10 min-h-screen py-20 px-4">
+      <div className="relative z-10 min-h-screen pt-56 pb-20 px-4">
         <div className="max-w-6xl mx-auto">
           {/* 标题区域 */}
           <motion.div
@@ -67,6 +67,7 @@ const About: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
+            style={{ paddingTop: '120px' }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               关于我
@@ -81,7 +82,7 @@ const About: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 mt-8"
           >
             {/* 左侧：头像和基本信息 */}
             <div className="text-center lg:text-left">

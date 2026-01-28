@@ -61,7 +61,7 @@ const Contact: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-dark/50 via-transparent to-dark-secondary/50 opacity-70" />
       
       {/* 内容区域 */}
-      <div className="relative z-10 min-h-screen py-20 px-4">
+      <div className="relative z-10 min-h-screen pt-56 pb-20 px-4">
         <div className="max-w-6xl mx-auto">
           {/* 标题区域 */}
           <motion.div
@@ -69,6 +69,7 @@ const Contact: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
+            style={{ paddingTop: '120px' }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               联系我
@@ -83,7 +84,7 @@ const Contact: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-center mb-12"
+            className="text-center mb-12 mt-8"
           >
             <div className="inline-flex items-center gap-2 px-6 py-3 bg-green-600/20 border border-green-500/50 rounded-full">
               <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>

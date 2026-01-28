@@ -4,7 +4,7 @@ export interface Project {
   title: string;
   description: string;
   type: 'unity' | 'unreal' | 'mobile' | 'pc' | 'web';
-  role: 'developer' | 'designer' | 'artist' | 'producer';
+  role: 'developer' | 'designer' | 'artist' | 'producer' | 'lead-developer' | 'gameplay-programmer' | 'solo-developer' | 'developer-designer';
   coverImage: string;
   previewGif?: string;
   videoUrl?: string;
@@ -15,6 +15,9 @@ export interface Project {
   developmentTime: string;
   teamSize?: number;
   isTeamProject: boolean;
+  status?: 'completed' | 'in-development' | 'published' | 'prototype';
+  year?: string;
+  tags?: string[];
 }
 
 // Skill types

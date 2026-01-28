@@ -49,7 +49,11 @@ const Projects: React.FC = () => {
       developer: '开发者',
       designer: '设计师',
       artist: '美术',
-      producer: '制作人'
+      producer: '制作人',
+      'lead-developer': '主开发者',
+      'gameplay-programmer': '游戏程序员',
+      'solo-developer': '独立开发者',
+      'developer-designer': '开发设计师'
     };
     return roles[role] || role;
   };
@@ -63,7 +67,7 @@ const Projects: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-dark/50 via-transparent to-dark-secondary/50 opacity-70" />
       
       {/* 内容区域 */}
-      <div className="relative z-10 min-h-screen py-20 px-4">
+      <div className="relative z-10 min-h-screen pt-56 pb-20 px-4">
         <div className="max-w-7xl mx-auto">
           {/* 标题区域 */}
           <motion.div
@@ -71,6 +75,7 @@ const Projects: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
+            style={{ paddingTop: '120px' }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               项目展示
@@ -85,7 +90,7 @@ const Projects: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-4 mb-12"
+            className="flex flex-wrap justify-center gap-4 mb-12 mt-16"
           >
             {categories.map((category) => (
               <motion.button
@@ -110,7 +115,7 @@ const Projects: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8"
           >
             {filteredProjects.map((project, index) => (
               <motion.div
@@ -125,10 +130,28 @@ const Projects: React.FC = () => {
                 {/* 项目卡片 */}
                 <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-800/50 hover:border-primary-500/50 transition-all duration-300">
                   {/* 封面图区域 */}
-                  <div className="relative h-48 bg-gradient-to-br from-primary-900/20 to-secondary-900/20 overflow-hidden">
-                    {/* 占位图标 */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-6xl opacity-50">{getTypeIcon(project.type)}</span>
+                  <div 
+                    className="relative bg-gradient-to-br from-primary-900/20 to-secondary-900/20 overflow-hidden"
+                    style={{ height: '100px', minHeight: '100px', maxHeight: '100px' }}
+                  >
+                    {/* 项目封面图 */}
+                    {project.coverImage ? (
+                      <img
+                        src={project.coverImage}
+                        alt={`${project.title} cover`}
+                        className="w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                        style={{ height: '100px', minHeight: '100px', maxHeight: '100px' }}
+                        loading="lazy"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                          e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                        }}
+                      />
+                    ) : null}
+                    
+                    {/* 占位图标（图片加载失败或无封面时显示） */}
+                    <div className={`absolute inset-0 flex items-center justify-center ${project.coverImage ? 'hidden' : ''}`}>
+                      <span className="opacity-50" style={{ fontSize: '32px', lineHeight: '32px' }}>{getTypeIcon(project.type)}</span>
                     </div>
                     
                     {/* 悬停时的操作按钮 */}
@@ -140,7 +163,7 @@ const Projects: React.FC = () => {
                       >
                         {project.videoUrl && (
                           <motion.button
-                            className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+                            className="px-4 py-2 text-sm bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                           >
@@ -149,7 +172,7 @@ const Projects: React.FC = () => {
                         )}
                         {project.demoUrl && (
                           <motion.button
-                            className="px-4 py-2 bg-secondary-600 text-white rounded-lg hover:bg-secondary-700 transition-colors"
+                            className="px-4 py-2 text-sm bg-secondary-600 text-white rounded-lg hover:bg-secondary-700 transition-colors"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                           >
@@ -161,13 +184,13 @@ const Projects: React.FC = () => {
                   </div>
 
                   {/* 项目信息 */}
-                  <div className="p-6">
+                  <div className="p-3 sm:p-4">
                     {/* 项目标题和类型 */}
                     <div className="flex items-start justify-between mb-3">
-                      <h3 className="text-xl font-bold text-white group-hover:text-primary-400 transition-colors">
+                      <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-primary-400 transition-colors">
                         {project.title}
                       </h3>
-                      <span className="text-2xl">{getTypeIcon(project.type)}</span>
+                      <span className="text-base sm:text-lg">{getTypeIcon(project.type)}</span>
                     </div>
 
                     {/* 项目描述 */}
